@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>European Public Procurement Awards 2021–2023</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <header class="hero">
+    <p class="eyebrow">TED Contract Award Notices · 2021–2023</p>
+    <h1>Where does European public procurement money go?</h1>
+    <p class="subtitle">
+      An exploratory visualization of public contract awards in Europe, using TED data enriched with CPV categories.
+    </p>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Overview</h2>
+      <p>
+        This project explores how European public procurement awards are distributed by year,
+        buyer country, contract type and CPV sector. The visualization is based on TED Contract
+        Award Notices from 2021 to 2023. The original files were cleaned and aggregated before
+        visualization in order to keep the final web page clear and easy to navigate.
+      </p>
+      <p>
+        The goal is not to build a complete procurement analysis system, but to provide a
+        readable interactive overview of the main patterns in the selected data.
+      </p>
+
+      <div id="kpi-container" class="kpi-grid"></div>
+    </section>
+
+    <section class="section controls-section">
+      <h2>Interactive controls</h2>
+      <p>
+        Use the control below to switch between the economic value of awards and the number of awards.
+      </p>
+
+      <label for="metric-select">Metric</label>
+      <select id="metric-select">
+        <option value="total_value_euro">Total awarded value (€)</option>
+        <option value="awards">Number of awards</option>
+      </select>
+    </section>
+
+    <section class="section">
+      <h2>1. Evolution over time</h2>
+      <p>
+        This chart shows the overall evolution between 2021 and 2023. It helps check whether
+        the total volume of procurement changed strongly across the selected period.
+      </p>
+      <div id="chart-year" class="chart"></div>
+    </section>
+
+    <section class="section">
+      <h2>2. Main buyer countries</h2>
+      <p>
+        This ranking highlights the countries whose contracting authorities concentrate the largest
+        procurement volume in the filtered dataset.
+      </p>
+      <div id="chart-country" class="chart"></div>
+    </section>
+
+    <section class="section">
+      <h2>3. Main CPV sectors</h2>
+      <p>
+        CPV codes classify the object of public contracts. Here they are aggregated by CPV division
+        to make the main sectors easier to compare.
+      </p>
+      <div id="chart-cpv" class="chart"></div>
+    </section>
+
+    <section class="section">
+      <h2>4. Contract type by year</h2>
+      <p>
+        This chart compares supplies, services and works. It is useful for seeing whether the
+        structure of procurement changes across the period.
+      </p>
+      <div id="chart-contract-type" class="chart"></div>
+    </section>
+
+    <section class="section">
+      <h2>5. Supplier country information</h2>
+      <p>
+        The dataset does not always identify the supplier country. For this reason, the visualization
+        separates domestic awards, cross-border awards and awards with unknown supplier country.
+      </p>
+      <div id="chart-supplier-status" class="chart"></div>
+    </section>
+
+    <section class="section conclusion">
+      <h2>Main reading</h2>
+      <p>
+        The visualization suggests that the awarded value is concentrated in a limited number
+        of buyer countries and CPV divisions. Romania, France, Italy, Poland and Spain appear
+        among the main buyer countries in the processed dataset.
+      </p>
+      <p>
+        By contract type, supplies represent the largest share of the total awarded value in
+        the three years analysed. At sector level, medical equipment and pharmaceuticals is
+        the most prominent CPV division, followed by construction work and architecture,
+        engineering and planning services.
+      </p>
+      <p>
+        The supplier country information must be interpreted carefully, because the dataset
+        does not always identify the supplier country. For this reason, the visualization
+        separates domestic awards, cross-border awards and awards with unknown supplier country.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Data source: TED Contract Award Notices, 2021–2023. Values are shown after basic data
+      cleaning and aggregation. The most extreme 0.5% of award values were excluded to reduce
+      distortion in the exploratory charts.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
